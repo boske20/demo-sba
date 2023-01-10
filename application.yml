@@ -1,0 +1,30 @@
+server:
+  port: 8080
+logging:
+  level:
+    org.springframework.cloud.kubernetes: TRACE
+    de.codecentric.boot.admin.discovery.ApplicationDiscoveryListener: DEBUG
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  server:
+    port: 8081
+spring:
+  application:
+    name: admin-server
+  boot:
+    admin:
+      context-path: '/admin'
+      ui:
+        title: 'Spring Boot Admin'
+        brand: 'Spring Boot Admin'
+cloud:
+  kubernetes:
+    discovery:
+      instances-metadata:
+        spring-boot: "true"
+      all-namespaces: true
+      service-labels:
+        spring-boot: "true"
