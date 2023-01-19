@@ -19,12 +19,15 @@ spring:
       context-path: '/admin'
       ui:
         title: 'Spring Boot Admin'
-        brand: 'Spring Boot Admin'
-cloud:
-  kubernetes:
-    discovery:
-      instances-metadata:
-        spring-boot: "true"
-      all-namespaces: true
-      service-labels:
-        spring-boot: "true"
+        brand: 'Spring Boot Admin'    
+  cloud:
+    kubernetes:
+      discovery:
+        primary-port-name: probes
+        all-namespaces: true
+        service-labels:
+          spring-boot: true
+        catalog-services-watch:
+          enabled: true
+          catalogServicesWatchDelay: 10000
+    
